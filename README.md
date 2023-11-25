@@ -34,7 +34,6 @@ down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 **You can get a list of enrichment methods BioEnricher can perform:**
 ```R
 listEnrichMethod()
-
 # "GO", "KEGG", "MKEGG", "WikiPathways", "Reactome", "MsigDB", "DO", "CGN", "DisGeNET", "CellMarker", "CMAP"
 ```
 
