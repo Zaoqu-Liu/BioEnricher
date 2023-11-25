@@ -116,7 +116,7 @@ lzq_ORA.barplot2(
   obj.types = c('Up','Down')
 )
 ```
-<img src="man/Two-types-GO.png" width="100%" />
+<img src="man/Two-types-GO.png" width="60%" />
 
 
 
