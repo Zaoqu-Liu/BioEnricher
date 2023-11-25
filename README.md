@@ -33,6 +33,7 @@ down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
 ## :paperclip: ORA
 **This function will perform over-representative analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
+
 **Set enrich.type using an enrichment analysis method mentioned above.**
 ```R
 kegg <- lzq_ORA(
