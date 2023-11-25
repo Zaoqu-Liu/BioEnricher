@@ -31,3 +31,31 @@ up.genes <- res$SYMBOL[res$log2FoldChange > 2 & res$padj < 0.05]
 # Define a down-regulated gene list
 down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
+
+## ORA.integrated will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).
+```R
+library(BioEnricher)
+# Integrative enrichment analysis of the up-regulated gene list
+up.enrich <- lzq_ORA.integrated(
+  genes = up.genes,
+  background.genes = NULL,
+  GO.ont = 'ALL',
+  perform.WikiPathways = T,
+  perform.Reactome = T,
+  perform.MsigDB = T,
+  MsigDB.category = 'ALL',
+  perform.Cancer.Gene.Network = T,
+  perform.disease.ontoloty = T,
+  perform.DisGeNET = T,
+  perform.CellMarker = T,
+  perform.CMAP = T,
+  min.Geneset.Size = 3
+)
+```
+
+
+
+
+
+
+
