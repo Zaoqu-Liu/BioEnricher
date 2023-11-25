@@ -235,12 +235,6 @@ no term enriched under specific pvalueCutoff...
 +++ Done!
 ```
 ## :page_facing_up: Visualization for positive or negative GSEA enrichment results
-**Enrichment barplot for positive or negative GSEA results**
-```R
-lzq_GSEA.barplot1(enrich.obj = fit2$simplyGO,type = 'pos')
-```
-<img src="man/GSEA1.jpg" width="60%" />
-
 **Visualize analyzing result of GSEA**
 ```R
 lzq_gseaplot(
@@ -252,6 +246,12 @@ lzq_gseaplot(
 )
 ```
 <img src="man/GSEA.jpg" width="60%" />
+
+**Enrichment barplot for positive or negative GSEA results**
+```R
+lzq_GSEA.barplot1(enrich.obj = fit2$simplyGO,type = 'pos')
+```
+<img src="man/GSEA1.jpg" width="60%" />
 
 **Enrichment dotplot for positive or negative GSEA results**
 ```R
