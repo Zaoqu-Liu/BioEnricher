@@ -33,9 +33,8 @@ down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
 ## :paperclip: ORA
 **This function will perform over-representative analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
-
-**Set enrich.type using an enrichment analysis method mentioned above.**
 ```R
+# Set enrich.type using an enrichment analysis method mentioned above.
 kegg <- lzq_ORA(
   genes = res$SYMBOL[res$log2FoldChange > 0 & res$padj < 0.05],
   enrich.type = 'KEGG'
@@ -173,12 +172,12 @@ lzq_ORA.barplot2(
 
 ## :paperclip: GSEA
 **This function will perform gene-set enrichment analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
-**Set enrich.type using an enrichment analysis method mentioned above.**
 ```R
 # obtain an order ranked geneList.
 grlist <- res$log2FoldChange; names(grlist) <- res$SYMBOL
 grlist <- sort(grlist,decreasing = T)
 
+# Set enrich.type using an enrichment analysis method mentioned above.
 fit <- lzq_GSEA(grlist,enrich.type = 'KEGG')
 # This function will output its calculation process.
 +++ Updating gene symbols...
