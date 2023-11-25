@@ -39,6 +39,7 @@ kegg <- lzq_ORA(
   genes = res$SYMBOL[res$log2FoldChange > 0 & res$padj < 0.05],
   enrich.type = 'KEGG'
 )
+# This function will output its calculation process.
 +++ Updating gene symbols...
 Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ Transforming SYMBOL to ENTREZID...
@@ -47,16 +48,17 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 109 significant terms were detected...
 +++ Done!
 ```
-## :page_facing_up: Simple visualization of KEGG pathway based on pathview package
+## :page_facing_up: Simple visualization of KEGG pathway based on the pathview package
 ```R
 res2 <- res[res$log2FoldChange > 0 & res$padj < 0.05,c(2,4)]
 res2 <- data.frame(row.names = res2$SYMBOL,R=res2$log2FoldChange)
+
 lzq_KEGGview(gene.data = res2,pathway.id = 'hsa04218')
 ```
 <img src="man/hsa04510.png" width="100%" />
 
 ## :paperclip: ORA.integrated
-**This function will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
+**This function will perform an integration for ORA enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
 ```R
 library(BioEnricher)
 # Integrative enrichment analysis of the up-regulated gene list
@@ -132,7 +134,7 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 1426 significant terms were detected...
 +++ Done!
 ```
-## :page_facing_up: Visualization for one enrichment object
+## :page_facing_up: Visualization for one ORA enrichment object
 **barplot**
 ```R
 lzq_ORA.barplot1(enrich.obj = up.enrich$simplyGO)
@@ -145,7 +147,7 @@ lzq_ORA.dotplot1(enrich.obj = up.enrich$simplyGO)
 ```
 <img src="man/GO2.jpg" width="60%" />
 
-## :page_facing_up: Visualization for two types of enrichment objects
+## :page_facing_up: Visualization for two types of ORA enrichment objects
 ```R
 lzq_ORA.barplot2(
   enrich.obj1 = up.enrich$simplyGO,
@@ -168,7 +170,80 @@ lzq_ORA.barplot2(
 
 **Note: use.Chinese exists all the plot functions.**
 
+## :paperclip: GSEA
+**This function will perform gene-set enrichment analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
+**Set enrich.type using an enrichment analysis method mentioned above.**
+```R
+# obtain an order ranked geneList.
+grlist <- res$log2FoldChange; names(grlist) <- res$SYMBOL
+grlist <- sort(grlist,decreasing = T)
 
+fit <- lzq_GSEA(grlist,enrich.type = 'KEGG')
+# This function will output its calculation process.
++++ Updating gene symbols...
+Maps last updated on: Thu Oct 24 12:31:05 2019
++++ Transforming SYMBOL to ENTREZID...
+'select()' returned 1:many mapping between keys and columns
++++ Performing KEGG enrichment...
++++ 8 significant terms were detected...
++++ Done!
+```
+## :paperclip: GSEA.integrated
+**This function will perform an integration for GSEA enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
+```R
+# Integrative enrichment analysis of the up-regulated gene list
+fit2 <- lzq_GSEA.integrated(
+  genes = grlist,
+  gene.type = 'SYMBOL',
+  GO.ont = 'ALL',
+  perform.WikiPathways = T,
+  perform.Reactome = T,
+  perform.MsigDB = T,
+  MsigDB.category = 'ALL',
+  perform.Cancer.Gene.Network = T,
+  perform.disease.ontoloty = T,
+  perform.DisGeNET = T,
+  perform.CellMarker = T,
+  perform.CMAP = T,
+  min.Geneset.Size = 3
+)
+# This function will output its calculation process.
 
+```
+## :page_facing_up: Visualization for one GSEA enrichment object
+**barplot**
+```R
+lzq_ORA.barplot1(enrich.obj = up.enrich$simplyGO)
+```
+<img src="man/GO1.jpg" width="60%" />
+
+**dotplot**
+```R
+lzq_ORA.dotplot1(enrich.obj = up.enrich$simplyGO)
+```
+<img src="man/GO2.jpg" width="60%" />
+
+## :page_facing_up: Visualization for two types of GSEA enrichment objects
+```R
+lzq_ORA.barplot2(
+  enrich.obj1 = up.enrich$simplyGO,
+  enrich.obj2 = down.enrich$simplyGO,
+  obj.types = c('Up','Down')
+)
+```
+<img src="man/Two-types-GO.png" width="60%" />
+
+### You can translate the terms in the graph into Chinese using use.Chinese = T
+```R
+lzq_ORA.barplot2(
+  enrich.obj1 = up.enrich$simplyGO,
+  enrich.obj2 = down.enrich$simplyGO,
+  obj.types = c('Up','Down'),
+  use.Chinese = T
+)
+```
+<img src="man/Two-types-GO-Chinese.jpg" width="35%" />
+
+**Note: use.Chinese exists all the plot functions.**
 
 
