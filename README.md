@@ -265,7 +265,7 @@ lzq_GSEA.dotplot1(enrich.obj = fit2$simplyGO,type = 'pos')
 ```
 <img src="man/GSEA2.jpg" width="60%" />
 
-## :page_facing_up: Enrichment barplot for positive and negative GSEA results
+## :page_facing_up: Visualization for positive and negative GSEA enrichment results
 ```R
 lzq_GSEA.barplot2(enrich.obj = fit2$simplyGO)
 ```
