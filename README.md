@@ -149,7 +149,7 @@ lzq_ORA.barplot2(
   use.Chinese = T
 )
 ```
-<img src="man/Two-types-GO-Chinese.jpg" width="60%" />
+<img src="man/Two-types-GO-Chinese.jpg" width="35%" />
 
 **Note: use.Chinese exists all the plot functions.**
 
