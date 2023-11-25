@@ -173,7 +173,7 @@ lzq_ORA.barplot2(
 ## :paperclip: GSEA
 **This function will perform gene-set enrichment analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
 ```R
-# obtain an order ranked geneList.
+# Obtain an order ranked geneList.
 grlist <- res$log2FoldChange; names(grlist) <- res$SYMBOL
 grlist <- sort(grlist,decreasing = T)
 
