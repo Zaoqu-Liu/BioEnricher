@@ -71,8 +71,24 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 1765 significant terms were detected...
 +++ Done!
 ```
-
-
+```R
+# Integrative enrichment analysis of the down-regulated gene list
+down.enrich <- lzq_ORA.integrated(
+  genes = down.genes,
+  background.genes = NULL,
+  GO.ont = 'ALL',
+  perform.WikiPathways = T,
+  perform.Reactome = T,
+  perform.MsigDB = T,
+  MsigDB.category = 'ALL',
+  perform.Cancer.Gene.Network = T,
+  perform.disease.ontoloty = T,
+  perform.DisGeNET = T,
+  perform.CellMarker = T,
+  perform.CMAP = T,
+  min.Geneset.Size = 3
+)
+# This function will output its calculation process.
 
 
 
