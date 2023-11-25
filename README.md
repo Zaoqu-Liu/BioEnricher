@@ -257,7 +257,7 @@ lzq_GSEA.barplot2(enrich.obj = fit2$simplyGO)
 ```R
 lzq_GSEA.barplot2(enrich.obj = fit2$simplyGO,use.Chinese = T)
 ```
-<img src="man/GSEA3.jpg" width="35%" />
+<img src="man/GSEA3.jpg" width="45%" />
 
 **Note: use.Chinese exists all the plot functions.**
 
