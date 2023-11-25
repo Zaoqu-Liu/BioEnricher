@@ -4,5 +4,5 @@ The primary strength of BioEnricher lies in addressing two issues: firstly, it f
 
 ## Installation
 You can install the released version of BioEnricher from Github with:
-'''R
+```R
 devtools::install_github("Zaoqu-Liu/BioEnricher")
