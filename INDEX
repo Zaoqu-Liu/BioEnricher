@@ -1,0 +1,30 @@
+CMAPfromDSEATM          A dataframe including drugs and their related
+                        genes
+cols_brown_green        A vector of colors
+listEnrichMethod        List of enrichment methods
+lzq_GSEA                Gene set enrichment analysis
+lzq_GSEA.barplot1       Enrichment barplot for positive or negative
+                        GSEA results
+lzq_GSEA.barplot2       Enrichment barplot for positive and negative
+                        GSEA results
+lzq_GSEA.dotplot1       Enrichment dotplot for positive or negative
+                        GSEA results
+lzq_GSEA.integrated     Integrate gene set enrichment analysis
+lzq_KEGGview            KEGG pathway visualization
+lzq_ORA                 Over-representative analysis
+lzq_ORA.barplot1        Enrichment barplot for one ORA enrichment
+                        object
+lzq_ORA.barplot2        Enrichment barplot for two ORA enrichment
+                        objects
+lzq_ORA.dotplot1        Enrichment dotplot for one ORA enrichment
+                        object
+lzq_ORA.integrated      Integrate over-representative analysis
+lzq_getEF               Get enrichment factor from enrichResult
+lzq_getGR_BR            Get numeric GeneRatio and BgRatio from
+                        enrichResult
+lzq_gseaplot            Visualize analyzing result of GSEA.
+lzq_translate           Baidu translation
+lzq_updateSymbol        Title Identify outdated or Excel-mogrified gene
+                        symbols for a gene vector
+lzq_updateSymbolforDL   Title Identify outdated or Excel-mogrified gene
+                        symbols for a dataframe
