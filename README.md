@@ -8,8 +8,8 @@ You can install the released version of BioEnricher from Github with:
 devtools::install_github("Zaoqu-Liu/BioEnricher")
 ```
 ## :beginner: Examples
-**Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)**
-You should identify an interested gene list or an order-ranked geneList by employing differential analysis or other methods.
+### Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)
+**You should identify an interested gene list or an order-ranked geneList by employing differential analysis or other methods.**
 ```R
 library(airway)
 library(DESeq2)
