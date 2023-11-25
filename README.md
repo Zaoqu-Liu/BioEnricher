@@ -241,6 +241,18 @@ lzq_GSEA.barplot1(enrich.obj = fit2$simplyGO,type = 'pos')
 ```
 <img src="man/GSEA1.jpg" width="60%" />
 
+**Visualize analyzing result of GSEA**
+```R
+lzq_gseaplot(
+  fit2$simplyGO,
+  Pathway.ID = 'GO:0030016',
+  rank = F,
+  statistic.position = c(0.71,0.85),
+  rel.heights = c(1, 0.4)
+)
+```
+<img src="man/GSEA.jpg" width="60%" />
+
 **Enrichment dotplot for positive or negative GSEA results**
 ```R
 lzq_GSEA.dotplot1(enrich.obj = fit2$simplyGO,type = 'pos')
