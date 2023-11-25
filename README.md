@@ -19,10 +19,9 @@ library(org.Hs.eg.db)
 data(airway)
 se <- airway
 se$dex <- relevel(se$dex, "untrt") 
-dds <- DESeqDataSet(se, design = ~ cell + dex)
-dds <- estimateSizeFactors(dds)
-dds <- DESeq(dds)                   
-res <- as.data.frame(results(dds))%>%na.omit()
+res <- DESeqDataSet(se, design = ~ cell + dex)%>%
+  estimateSizeFactors()%>%DESeq()%>%
+  results()%>%as.data.frame()%>%na.omit()
 ann <- bitr(rownames(res),'ENSEMBL','SYMBOL',org.Hs.eg.db)
 res <- merge(ann,res,by.x=1,by.y=0)%>%distinct(SYMBOL,.keep_all = T) # Very crude, just as an example
 ```
