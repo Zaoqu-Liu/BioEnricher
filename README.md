@@ -25,3 +25,9 @@ res <- DESeqDataSet(se, design = ~ cell + dex)%>%
 ann <- bitr(rownames(res),'ENSEMBL','SYMBOL',org.Hs.eg.db)
 res <- merge(ann,res,by.x=1,by.y=0)%>%distinct(SYMBOL,.keep_all = T) # Very crude, just as an example
 ```
+```R
+# Define an up-regulated gene list
+up.genes <- res$SYMBOL[res$log2FoldChange > 2 & res$padj < 0.05]
+# Define a down-regulated gene list
+down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
+```
