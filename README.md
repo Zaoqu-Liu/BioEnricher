@@ -117,8 +117,16 @@ lzq_ORA.barplot2(
 )
 ```
 <img src="man/Two-types-GO.png" width="60%" />
-
-
+### You can translate the terms in the graph into Chinese using use.Chinese = T
+```R
+lzq_ORA.barplot2(
+  enrich.obj1 = up.enrich$simplyGO,
+  enrich.obj2 = down.enrich$simplyGO,
+  obj.types = c('Up','Down'),
+  use.Chinese = T
+)
+```
+### Note: use.Chinese exists all the plot functions.
 
 
 
