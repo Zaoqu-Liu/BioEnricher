@@ -127,7 +127,7 @@ lzq_ORA.barplot2(
   use.Chinese = T
 )
 ```
-### Note: use.Chinese exists all the plot functions.
+**Note: use.Chinese exists all the plot functions.**
 
 
 
