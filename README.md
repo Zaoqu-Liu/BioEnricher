@@ -39,6 +39,7 @@ kegg <- lzq_ORA(
   genes = res$SYMBOL[res$log2FoldChange > 0 & res$padj < 0.05],
   enrich.type = 'KEGG'
 )
+
 # This function will output its calculation process.
 +++ Updating gene symbols...
 Maps last updated on: Thu Oct 24 12:31:05 2019
@@ -77,6 +78,7 @@ up.enrich <- lzq_ORA.integrated(
   perform.CMAP = T,
   min.Geneset.Size = 3
 )
+
 # This function will output its calculation process.
 +++ Updating gene symbols...
 Maps last updated on: Thu Oct 24 12:31:05 2019
@@ -114,6 +116,7 @@ down.enrich <- lzq_ORA.integrated(
   perform.CMAP = T,
   min.Geneset.Size = 3
 )
+
 # This function will output its calculation process.
 +++ Updating gene symbols...
 Maps last updated on: Thu Oct 24 12:31:05 2019
@@ -179,6 +182,7 @@ grlist <- sort(grlist,decreasing = T)
 
 # Set enrich.type using an enrichment analysis method mentioned above.
 fit <- lzq_GSEA(grlist,enrich.type = 'KEGG')
+
 # This function will output its calculation process.
 +++ Updating gene symbols...
 Maps last updated on: Thu Oct 24 12:31:05 2019
@@ -207,42 +211,53 @@ fit2 <- lzq_GSEA.integrated(
   perform.CMAP = T,
   min.Geneset.Size = 3
 )
+
 # This function will output its calculation process.
-
++++ Updating gene symbols...
+Maps last updated on: Thu Oct 24 12:31:05 2019
++++ Transforming SYMBOL to ENTREZID...
+'select()' returned 1:many mapping between keys and columns
++++ Performing GO-ALL enrichment...
++++ Symplifying GO results...
++++ Performing KEGG enrichment...
++++ Performing Module KEGG enrichment...
++++ Performing WikiPathways enrichment...
++++ Performing Reactome pathways enrichment...
++++ Performing Disease Ontoloty enrichment...
++++ Performing Cancer Gene Network enrichment...
+no term enriched under specific pvalueCutoff...
++++ Performing DisGeNET enrichment...
++++ Performing CellMarker enrichment...
++++ Performing MsigDB-ALL enrichment...                                               
++++ Performing CMAP enrichment...
+no term enriched under specific pvalueCutoff...
++++ 311 significant terms were detected...
++++ Done!
 ```
-## :page_facing_up: Visualization for one GSEA enrichment object
-**barplot**
+## :page_facing_up: Visualization for positive or negative GSEA enrichment results
+**Enrichment barplot for positive or negative GSEA results**
 ```R
-lzq_ORA.barplot1(enrich.obj = up.enrich$simplyGO)
+lzq_GSEA.barplot1(enrich.obj = fit2$simplyGO,type = 'pos')
 ```
-<img src="man/GO1.jpg" width="60%" />
+<img src="man/GSEA1.jpg" width="60%" />
 
-**dotplot**
+**Enrichment dotplot for positive or negative GSEA results**
 ```R
-lzq_ORA.dotplot1(enrich.obj = up.enrich$simplyGO)
+lzq_GSEA.dotplot1(enrich.obj = fit2$simplyGO,type = 'pos')
 ```
-<img src="man/GO2.jpg" width="60%" />
+<img src="man/GSEA2.jpg" width="60%" />
 
-## :page_facing_up: Visualization for two types of GSEA enrichment objects
+## :page_facing_up: Enrichment barplot for positive and negative GSEA results
 ```R
-lzq_ORA.barplot2(
-  enrich.obj1 = up.enrich$simplyGO,
-  enrich.obj2 = down.enrich$simplyGO,
-  obj.types = c('Up','Down')
-)
+lzq_GSEA.barplot2(enrich.obj = fit2$simplyGO)
 ```
-<img src="man/Two-types-GO.png" width="60%" />
+<img src="man/GSEA4.jpg" width="60%" />
 
 ### You can translate the terms in the graph into Chinese using use.Chinese = T
 ```R
-lzq_ORA.barplot2(
-  enrich.obj1 = up.enrich$simplyGO,
-  enrich.obj2 = down.enrich$simplyGO,
-  obj.types = c('Up','Down'),
-  use.Chinese = T
-)
+lzq_GSEA.barplot2(enrich.obj = fit2$simplyGO,use.Chinese = T)
 ```
-<img src="man/Two-types-GO-Chinese.jpg" width="35%" />
+<img src="man/GSEA3.jpg" width="35%" />
 
 **Note: use.Chinese exists all the plot functions.**
 
