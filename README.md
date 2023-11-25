@@ -47,6 +47,14 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 109 significant terms were detected...
 +++ Done!
 ```
+## :page_facing_up: Simple visualization of KEGG pathway based on pathview package
+```R
+res2 <- res[res$log2FoldChange > 0 & res$padj < 0.05,c(2,4)]
+res2 <- data.frame(row.names = res2$SYMBOL,R=res2$log2FoldChange)
+lzq_KEGGview(gene.data = res2,pathway.id = 'hsa04218')
+```
+<img src="man/hsa04510.jpg" width="60%" />
+
 ## :paperclip: ORA.integrated
 **This function will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
 ```R
