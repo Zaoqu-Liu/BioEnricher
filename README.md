@@ -109,6 +109,19 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 1426 significant terms were detected...
 +++ Done!
 ```
+## :page_facing_up: Visualization for one enrichment object
+**barplot**
+```R
+lzq_ORA.barplot1(enrich.obj = up.enrich$simplyGO)
+```
+<img src="man/GO1.jpg" width="60%" />
+
+**dotplot**
+```R
+lzq_ORA.dotplot1(enrich.obj = up.enrich$simplyGO)
+```
+<img src="man/GO2.jpg" width="60%" />
+
 ## :page_facing_up: Visualization for two types of enrichment objects
 ```R
 lzq_ORA.barplot2(
