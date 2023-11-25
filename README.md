@@ -31,7 +31,15 @@ up.genes <- res$SYMBOL[res$log2FoldChange > 2 & res$padj < 0.05]
 # Define a down-regulated gene list
 down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
-
+## :paperclip: ORA
+**This function will perform over-representative analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
+**Set enrich.type using an enrichment analysis method mentioned above.**
+```R
+kegg <- lzq_ORA(
+  genes = res$SYMBOL[res$log2FoldChange > 0 & res$padj < 0.05],
+  enrich.type = 'KEGG'
+)
+```
 ## :paperclip: ORA.integrated
 **This function will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
 ```R
