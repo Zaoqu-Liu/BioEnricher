@@ -32,7 +32,8 @@ up.genes <- res$SYMBOL[res$log2FoldChange > 2 & res$padj < 0.05]
 down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
 
-## ORA.integrated will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).
+## :paperclip: ORA.integrated
+**This function will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
 ```R
 library(BioEnricher)
 # Integrative enrichment analysis of the up-regulated gene list
@@ -108,7 +109,7 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 1426 significant terms were detected...
 +++ Done!
 ```
-## Visualization for two types of enrichment results
+## :page_facing_up: Visualization for two types of enrichment objects
 ```R
 lzq_ORA.barplot2(
   enrich.obj1 = up.enrich$simplyGO,
