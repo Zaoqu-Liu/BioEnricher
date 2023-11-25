@@ -108,6 +108,19 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 +++ 1426 significant terms were detected...
 +++ Done!
 ```
+## Visualization for two types of enrichment results
+```R
+lzq_ORA.barplot2(
+  enrich.obj1 = up.enrich$simplyGO,
+  enrich.obj2 = down.enrich$simplyGO,
+  obj.types = c('Up','Down')
+)
+```
+
+
+
+
+
 
 
 
