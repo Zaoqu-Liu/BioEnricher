@@ -6,7 +6,7 @@ The primary strength of BioEnricher lies in addressing two issues: firstly, it f
 You can install the released version of BioEnricher from Github with:
 ```R
 devtools::install_github("Zaoqu-Liu/BioEnricher")
-
+```
 # Examples
 ## Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)
 You should identify an interested gene list or an order-ranked geneList by employing differential analysis or other methods.
@@ -25,3 +25,4 @@ dds <- DESeq(dds)
 res <- as.data.frame(results(dds))%>%na.omit()
 ann <- bitr(rownames(res),'ENSEMBL','SYMBOL',org.Hs.eg.db)
 res <- merge(ann,res,by.x=1,by.y=0)%>%distinct(SYMBOL,.keep_all = T) # Very crude, just as an example
+```
