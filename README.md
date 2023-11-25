@@ -39,6 +39,13 @@ kegg <- lzq_ORA(
   genes = res$SYMBOL[res$log2FoldChange > 0 & res$padj < 0.05],
   enrich.type = 'KEGG'
 )
++++ Updating gene symbols...
+Maps last updated on: Thu Oct 24 12:31:05 2019
++++ Transforming SYMBOL to ENTREZID...
+'select()' returned 1:1 mapping between keys and columns
++++ Performing KEGG enrichment...
++++ 109 significant terms were detected...
++++ Done!
 ```
 ## :paperclip: ORA.integrated
 **This function will perform an integration for enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
