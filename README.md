@@ -31,6 +31,13 @@ up.genes <- res$SYMBOL[res$log2FoldChange > 2 & res$padj < 0.05]
 # Define a down-regulated gene list
 down.genes <- res$SYMBOL[res$log2FoldChange < -2 & res$padj < 0.05]
 ```
+**You can get a list of enrichment methods BioEnricher can perform:**
+```R
+listEnrichMethod()
+
+# "GO", "KEGG", "MKEGG", "WikiPathways", "Reactome", "MsigDB", "DO", "CGN", "DisGeNET", "CellMarker", "CMAP"
+```
+
 ## :paperclip: ORA
 **This function will perform over-representative analysis including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network, DisGeNET, CellMarker, and CMAP.**
 ```R
