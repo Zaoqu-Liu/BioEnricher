@@ -5,6 +5,33 @@ BioEnricher lies in addressing two issues: firstly, it facilitates the seamless 
 ## :arrow_double_down: Installation
 **You can install the released version of BioEnricher from Github with:**
 ```R
+packages <- c("broom", "clusterProfiler", "dorothea", "DOSE", "dplyr", "enrichplot",
+              "europepmc", "ggplot2", "GSVA", "HGNChelper", "Hmisc", "httr", "jsonlite",
+              "magrittr", "msigdbr", "openssl", "pathview", "png", "progeny", "purrr",
+              "ReactomePA", "rlang", "stats", "stringr", "viper", "vroom")
+
+# Check and install the missing CRAN packages
+install_if_missing <- function(package) {
+  if (!require(package, character.only = TRUE)) {
+    install.packages(package)
+  }
+}
+
+# Check and install the missing Bioconductor packages
+install_bioc_if_missing <- function(package) {
+  if (!require(package, character.only = TRUE)) {
+    BiocManager::install(package)
+  }
+}
+
+for (package in packages) {
+  if (package %in% c("clusterProfiler", "DOSE", "enrichplot", "ReactomePA", "GSVA", "msigdbr")) {
+    install_bioc_if_missing(package)
+  } else {
+    install_if_missing(package)
+  }
+}
+
 install.packages('BioEnricher_0.1.0.tar.gz',repos=NULL,type='source')
 ```
 ## :beginner: Examples
