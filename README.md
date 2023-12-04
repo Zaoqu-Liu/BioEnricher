@@ -228,7 +228,7 @@ Maps last updated on: Thu Oct 24 12:31:05 2019
 ## :paperclip: GSEA.integrated
 **This function will perform an integration for GSEA enrichment analysis, including GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs).**
 ```R
-# Integrative enrichment analysis of the up-regulated gene list
+# Integrative enrichment analysis of the ranked gene list
 fit2 <- lzq_GSEA.integrated(
   genes = grlist,
   gene.type = 'SYMBOL',
