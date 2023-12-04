@@ -5,7 +5,7 @@ BioEnricher lies in addressing two issues: firstly, it facilitates the seamless 
 ## :arrow_double_down: Installation
 **You can install the released version of BioEnricher from Github with:**
 ```R
-install.packages('/Users/zaoquliu/Desktop/LZQ-1/BioEnricher_0.1.0.tar.gz',repos=NULL,type='source')
+install.packages('BioEnricher_0.1.0.tar.gz',repos=NULL,type='source')
 ```
 ## :beginner: Examples
 ### Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)
