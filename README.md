@@ -1,6 +1,6 @@
 ## :bar_chart: Overview
 ## Integrate analysis and visualization for bioinformatic enrichment analyzer
-BioEnricher lies in addressing two issues: firstly, it facilitates the seamless integration for enrichment analysis, encompassing diverse functionalities such as GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs); secondly, it encapsulates advanced visualization functions, streamlining the process for faster and more convenient data presentation.
+BioEnricher lies in addressing two issues: firstly, it facilitates the seamless integration for enrichment analysis, encompassing diverse functionalities such as GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs); infers the activities of transcription factors and PROGENy cancer pathways; searches the gene information, PubMed records and GEO metadata based on the input terms; secondly, it encapsulates advanced visualization functions, streamlining the process for faster and more convenient data presentation.
 
 ## :arrow_double_down: Installation
 **You can install the released version of BioEnricher from Github with:**
