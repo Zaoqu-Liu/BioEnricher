@@ -1,0 +1,197 @@
+---
+title: "BioEnricher (Quick Start)"
+author: "Zaoqu Liu"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  BiocStyle::html_document:
+    number_sections: yes
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{BioEnricher}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Integrate Analysis and Visualization for Bioinformatic Enrichment Analyzer
+
+`BioEnricher` lies in addressing two issues: firstly, it facilitates the seamless integration for enrichment analysis, encompassing diverse functionalities such as GO, KEGG, WikiPathways, Reactome, MsigDB, Disease Ontology, Cancer Gene Network, DisGeNET, CellMarker, and CMAP (drugs); infers the activities of transcription factors and PROGENy cancer pathways; searches the gene information, PubMed records and GEO metadata based on the input terms; secondly, it encapsulates advanced visualization functions, streamlining the process for faster and more convenient data presentation.
+
+```{r}
+library(BioEnricher)
+data("crc.data") # A list including expression and group data from a part of TCGA-CRC.
+exp <- crc.data$exp
+group <- crc.data$group
+```
+
+## Performing PCA
+
+```{r}
+pca <- lzq_PCAplot(
+  expr = exp,
+  scale = T,
+  Group = group,
+  levels = c("Normal", "Tumor"),
+  cols = c("#3E94B5", "#ED6355")
+)
+```
+
+## Performing limma differential expression analysis
+
+```{r}
+dea <- lzq_limma_DEA(
+  expr = exp,
+  group = group,
+  contrasts = "Tumor-Normal",
+  Select_P = "FDR",
+  cutoff_logFC = 1,
+  cutoff_P = 0.05
+)
+```
+
+## Performing volcano plot
+
+```{r fig.height=4.5, fig.width=4}
+lzq_volcano(
+  DEG = dea,
+  logFC_Ncol = 2,
+  Select_P = "FDR",
+  P_Ncol = 6,
+  DEG_type_Ncol = 8,
+  cutoff_P = 0.05,
+  cutoff_logFC = 1,
+  cols = c("#3E94B5", "#E3E3E3", "#ED6355"),
+  Select_genes = c("ETV4", "CDH3", "SLC26A3", "MYH11")
+)
+```
+
+## Performing ORA enrichment
+
+```{r}
+# Define an up-regulated gene list
+up.genes <- dea$Gene[dea$Type == "Up"]
+# Define a down-regulated gene list
+down.genes <- dea$Gene[dea$Type == "Down"]
+
+listEnrichMethod()
+
+# This function will perform over-representative analysis including GO, KEGG,
+# WikiPathways, Reactome, MsigDB, Disease Ontoloty, Cancer Gene Network,
+# DisGeNET, CellMarker, and CMAP.
+
+# Set enrich.type using an enrichment analysis method mentioned above.
+up.go <- lzq_ORA(
+  genes = up.genes,
+  enrich.type = "GO"
+)
+down.go <- lzq_ORA(
+  genes = down.genes,
+  enrich.type = "GO"
+)
+```
+```{r fig.height=4, fig.width=7}
+lzq_ORA.barplot1(enrich.obj = up.go$simplyGO)
+
+lzq_ORA.dotplot1(enrich.obj = up.go$simplyGO)
+```
+
+```{r fig.height=5.5}
+lzq_ORA.barplot2(
+  enrich.obj1 = up.go$simplyGO,
+  enrich.obj2 = down.go$simplyGO,
+  obj.types = c("Up", "Down")
+)
+```
+
+## Performing GSEA enrichment
+
+```{r}
+# Obtain an order ranked geneList.
+grlist <- dea$logFC
+names(grlist) <- dea$Gene
+grlist <- sort(grlist, decreasing = T)
+
+listEnrichMethod()
+```
+
+```{r}
+# Set enrich.type using an enrichment analysis method mentioned above.
+fit <- lzq_GSEA(grlist, enrich.type = "Reactome")
+```
+
+```{r}
+lzq_gseaplot(
+  GSEA.result = fit,
+  Pathway.ID = "R-HSA-1640170",
+  rank = F,
+  statistic.position = c(0.71, 0.85),
+  rel.heights = c(1, 0.4)
+)
+```
+
+```{r fig.height=4, fig.width=8.3}
+lzq_GSEA.barplot1(enrich.obj = fit, type = "pos")
+
+lzq_GSEA.dotplot1(enrich.obj = fit, type = "pos")
+```
+
+```{r fig.height=5.5}
+lzq_GSEA.barplot2(enrich.obj = fit)
+```
+
+## Performing PROGENy analysis
+
+```{r}
+ps <- lzq_progeny(exp = as.matrix(exp), top = 100)
+```
+
+```{r fig.height=4, fig.width=5}
+ps_dea <- lzq_progeny.dea(
+  progeny.res = ps,
+  groups = group,
+  control.group = "Normal"
+)
+```
+
+```{r fig.height=5.5, fig.width=5.5}
+ps_wnt <- lzq_progeny.gene.details(
+  dea.table = dea[, seq_len(2)],
+  pathway = "WNT"
+)
+```
+
+## Performing transcription factor analysis
+
+```{r}
+tf <- lzq_inferTF(
+  exp = as.matrix(exp),
+  use.cancer.regulons = T
+)
+```
+
+```{r fig.height=4.5, fig.width=4}
+tf.dea <- lzq_score.matrix.dea(
+  score.matrix = tf,
+  groups = group,
+  control.group = "Normal",
+  Select.P = "FDR",
+  cutoff.P = 0.05,
+  cutoff.logFC = 2,
+  Select_genes = c("E2F4", "IRF3", "TEAD1", "IRF4")
+)
+```
+
+```{r}
+lzq_tf.details(tf.genes = c("E2F4", "IRF3"), confidences = "A")
+```
+
+```{r}
+sessionInfo()
+```
+
