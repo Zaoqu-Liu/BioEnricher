@@ -32,7 +32,7 @@ for (package in packages) {
   }
 }
 
-install.packages('BioEnricher_0.1.0.tar.gz',repos=NULL,type='source')
+install.packages('BioEnricher_0.1.0.zip',repos=NULL,type='source')
 ```
 ## :beginner: Examples
 ### Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)
