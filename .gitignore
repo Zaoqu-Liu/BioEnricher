@@ -1,0 +1,6 @@
+# Built packages and rendered documents are published as release assets
+*.zip
+*.tar.gz
+*.tgz
+BioEnricher.html
+BioEnricher_*.pdf
