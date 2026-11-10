@@ -32,7 +32,9 @@ for (package in packages) {
   }
 }
 
-install.packages('BioEnricher_0.1.0.zip',repos=NULL,type='source')
+# BioEnricher_0.1.0.zip is a Windows binary build (R 4.3.1), attached to the v0.1.0 release
+install.packages('https://github.com/Zaoqu-Liu/BioEnricher/releases/download/v0.1.0/BioEnricher_0.1.0.zip',
+                 repos=NULL, type='win.binary')
 ```
 ## :beginner: Examples
 ### Get an interested gene list (for ORA) or an order-ranked geneList (for GSEA)
